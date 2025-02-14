@@ -5,3 +5,9 @@ services:
     image: redis:6  
     ports:
       - "6379"
+
+  python:
+    image: python:3.9-slim
+    volumen: ./app
+    ports:
+      - "5000" 
