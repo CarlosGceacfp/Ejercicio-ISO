@@ -8,6 +8,10 @@ services:
 
   python:
     image: python:3.9-slim
-    volumen: ./app
+    volumen:
+      - ./app
     ports:
       - "5000" 
+    depends_on:
+      - db
+      - redis
