@@ -13,4 +13,15 @@ services:
     ports:
       - "5000" 
     depends_on:
+      - db
       - redis
+  
+  db:
+    image: postgres:latest
+    container_name: mydatabase
+    restart: always
+    environment:
+      - POSTGRES_ROOT_PASSWORD=password 
+      - POSTGRES_DATABASE=user
+    ports:
+      - "5432"
