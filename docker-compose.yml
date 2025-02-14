@@ -1,5 +1,7 @@
 version: '3.8'
 
 services:
-  redis: '6'
-  ports: "6379"
+  redis:
+    image: redis:6  
+    ports:
+      - "6379"
