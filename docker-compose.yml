@@ -1,0 +1,5 @@
+version: '3.8'
+
+services:
+  redis: '6'
+  ports: "6379"
