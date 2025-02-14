@@ -4,14 +4,14 @@ services:
   redis:
     image: redis:6  
     ports:
-      - "6379"
+      - "6379:6379"
 
-  python:
+  web:
     image: python:3.9-slim
     volumes:
       - .:/app
     ports:
-      - "5000" 
+      - "5000:5000" 
     depends_on:
       - db
       - redis
@@ -24,4 +24,13 @@ services:
       - POSTGRES_ROOT_PASSWORD=password 
       - POSTGRES_DATABASE=user
     ports:
-      - "5432"
+      - "5432:5432"
+  
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - web
